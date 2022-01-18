@@ -8,6 +8,8 @@ body {
 
 .title-container {
     color: white;
+    display: flex;
+    align-items: flex-end;
     background-color: rgba(94, 71, 71, 0.8);
 }
 
@@ -31,11 +33,57 @@ body {
     width: 80%;
     height: 100%;
     background-color: rgba(236, 217, 232, 0.8);
+    padding-top: 60px;
+}
+
+.task-container {
+    width: 700px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: 70px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgba(209, 185, 195, 0.8);
+    border-radius: 10px;  
 }
 
 .task {
     color: rgb(104, 72, 72);
     font-size: large;
-    margin-top: 60px;
-    margin-left: 70px;
 }
+
+.task-container:hover {
+    background-color: rgba(204, 177, 188, 0.8);
+    cursor: default;
+}
+
+.buttons-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+#details {
+    border: none;
+    height: 25px;
+    width: 70px;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.icons-container {
+    display: flex;
+}
+
+.icon {
+    color: rgb(134, 57, 57);
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.icon:hover {
+    color: rgb(105, 36, 36);
+ }
