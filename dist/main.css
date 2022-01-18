@@ -1,0 +1,41 @@
+body {
+    height: 100vh;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.title-container {
+    color: white;
+    background-color: rgba(94, 71, 71, 0.8);
+}
+
+.title {
+    margin-left: 30px;
+    font-size: 40px;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.navigator {
+    height: 100%;
+    width: 20%;
+    background-color: rgba(209, 185, 195, 0.8);
+}
+
+.content {
+    width: 80%;
+    height: 100%;
+    background-color: rgba(236, 217, 232, 0.8);
+}
+
+.task {
+    color: rgb(104, 72, 72);
+    font-size: large;
+    margin-top: 60px;
+    margin-left: 70px;
+}
