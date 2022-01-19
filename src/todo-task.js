@@ -2,7 +2,7 @@ export class TodoTask {
     constructor(title, description, due_date, priority) {
         this.title = title;
         this.description = description;
-        this.due_date = due_date;
+        this.dueDate = due_date;
         this.priority = priority;
     }
 }
@@ -30,7 +30,7 @@ export let todoHandler = (() => {
     let updateDate = (title, date) => {
         todoList.forEach((element) => {
             if (element.title === title) {
-                element.due_date = date;
+                element.dueDate = date;
             }
         })
     }
