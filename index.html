@@ -19,9 +19,9 @@
         <div class='navigator'></div>
 
         <div class='content'>
-            
-            <div class='modal'>
-                <div class='modal-content details-modal'>
+
+            <div class='modal' id='details-modal'>
+                <div class='modal-content'>
                     <h1 id='task-title'></h1>
                     <div class='field-container'>
                         <label class='field'>Description: </label>
@@ -38,17 +38,24 @@
                         <span id='due-date'></span>
                     </div>
 
-
-                    <!-- <input id='title' type='text' placeholder="Title" name='title' value=''>
-                    <input id='author' type='text' placeholder="Author" name='author' value=''>
-                    <input id='pages' type='text' placeholder="Pages" name='pages' value=''>
-                    <div class='checkbox-container'>
-                        <label>Read?</label>
-                        <input id='read' type="checkbox" name='Read' value="true">
-                    </div>
-                    <button id='submit-button'>Add Book</button> -->
                 </div>
             </div>
+
+            <div class='modal' id='edit-modal'>
+                <div class='modal-content'>
+                    <h1 id='edit-details-title'></h1>
+                    <input id='edit-title' type='text' placeholder="Title" name='title' value=''>
+                    <input id='edit-description' type='text' placeholder="Description" name='description' value=''>
+                    <input id='edit-priority' type='text' placeholder="Priority" name='priority' value=''>
+                    <input id='edit-due-date' type='text' placeholder="Due Date" name='due-date' value=''>
+                    <!-- <div class='checkbox-container'>
+                        <label>Read?</label>
+                        <input id='read' type="checkbox" name='Read' value="true">
+                    </div> -->
+                    <button id='edit-submit-button'>Update</button>
+                </div>
+            </div>
+
 
             <!-- <div class='task-container'>
                 <span class='task'>This is a task.</span>
