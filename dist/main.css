@@ -111,21 +111,19 @@ body {
     padding: 25px;
 }
 
-.details-modal {
-
-}
-
-.description {
+#description {
     width: 80%;
+    margin: 0px;
 }
 
-#task-title {
+#task-title, #edit-title {
     color: maroon;
 }
 
 .field-container {
     display: flex;
     align-items: center;
+    border-bottom: 1px solid darkgray;
 }
 
 .field {
@@ -133,4 +131,13 @@ body {
     color: maroon;
     font-size: 18px;
     font-weight: bold;
+}
+
+input {
+    margin-bottom: 5px;
+    height: 25px;
+}
+
+input::placeholder {
+    color: rgba(94, 71, 71, 0.8);
 }
