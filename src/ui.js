@@ -2,6 +2,11 @@ import { todoHandler } from './todo-task';
 
 export let domHandler = (() => {
 
+    let deleteTask = (e) => {
+        let content = document.querySelector('.content');
+        content.removeChild(e.target.parentElement.parentElement.parentElement)
+    }
+
     let renderContent = () => {
         let content = document.querySelector('.content');
 
@@ -30,6 +35,8 @@ export let domHandler = (() => {
             let delIcon = document.createElement('span');
             delIcon.classList.add('material-icons', 'icon');
             delIcon.textContent = 'delete';
+
+            delIcon.addEventListener('click', e => deleteTask(e));
 
             iconsContainer.append(editIcon, delIcon);
             buttonsContainer.append(detailsButton, iconsContainer);
