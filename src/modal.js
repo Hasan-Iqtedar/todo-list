@@ -4,15 +4,18 @@ export let modalHandler = (() => {
 
     let detailsModal = document.querySelector('#details-modal');
     let editModal = document.querySelector('#edit-modal');
+    let addTaskModal = document.querySelector('#add-task-modal');
+    let addProjectModal = document.querySelector('#add-project-modal');
 
     window.addEventListener('click', (e) => {
-        if (e.target === detailsModal) {
-            detailsModal.style.display = 'none';
+
+        switch (e.target) {
+            case detailsModal: hideDetailsModal();
+            case editModal: hideEditModal(); clearEditForm();
+            case addTaskModal: hideAddTaskModal(); clearAddTaskForm();
+            case addProjectModal: hideAddProjectModal(); clearAddProjectForm();
         }
-        else if (e.target === editModal) {
-            editModal.style.display = 'none';
-            modalHandler.clearEditForm();
-        }
+
     });
 
     let clearEditForm = () => {
@@ -20,6 +23,19 @@ export let modalHandler = (() => {
         document.querySelector('#edit-description').value = '';
         document.querySelector('#edit-priority').value = '';
         document.querySelector('#edit-due-date').value = '';
+        document.querySelector('#edit-project').value = '';
+    }
+
+    let clearAddProjectForm = () => {
+        document.querySelector('#add-project-name').value = '';
+    }
+
+    let clearAddTaskForm = () => {
+        document.querySelector('#add-title').value = '';
+        document.querySelector('#add-description').value = '';
+        document.querySelector('#add-priority').value = '';
+        document.querySelector('#add-due-date').value = '';
+        document.querySelector('#add-project').value = '';
     }
 
     let showDetails = (e) => {
@@ -31,11 +47,13 @@ export let modalHandler = (() => {
         let description = document.querySelector('#description');
         let priority = document.querySelector('#priority');
         let dueDate = document.querySelector('#due-date');
+        let project = document.querySelector('#project-field');
 
         taskTitle.textContent = task.title;
         description.textContent = task.description;
         priority.textContent = task.priority;
         dueDate.textContent = task.dueDate;
+        project.textContent = task.project;
 
         detailsModal.style.display = 'block';
     }
@@ -55,16 +73,17 @@ export let modalHandler = (() => {
         let editDescription = document.querySelector('#edit-description');
         let editPriority = document.querySelector('#edit-priority');
         let editDueDate = document.querySelector('#edit-due-date');
+        let editProject = document.querySelector('#edit-project');
 
         if (editTitle.value !== '' && editDescription.value !== ''
-            && editPriority.value !== '' && editDueDate.value !== '') {
+            && editPriority.value !== '' && editDueDate.value !== '' && editProject !== '') {
 
             let taskIndex = e.target.getAttribute('data-index');
             let task = document.querySelector(`span[data-index='${taskIndex}']`);
             todoHandler.updateTaskDetails(
                 task.textContent, editTitle.value,
                 editDescription.value, editPriority.value,
-                editDueDate.value);
+                editDueDate.value, editProject.value);
 
             task.textContent = editTitle.value;
         }
@@ -73,13 +92,44 @@ export let modalHandler = (() => {
         editModal.style.display = 'none';
     }
 
+    let showAddProjectModal = () => {
+        addProjectModal.style.display = 'block';
+    }
+
+    let showAddTaskModal = () => {
+        addTaskModal.style.display = 'block';
+    }
+
+    let hideDetailsModal = () => {
+        detailsModal.style.display = 'none';
+    }
+
+    let hideEditModal = () => {
+        editModal.style.display = 'none';
+    }
+
+    let hideAddTaskModal = () => {
+        addTaskModal.style.display = 'none';
+    }
+
+    let hideAddProjectModal = () => {
+        addProjectModal.style.display = 'none';
+    }
+
     let updateDetailsSubmitButton = document.querySelector('#edit-submit-button');
+
     updateDetailsSubmitButton.addEventListener('click', e => updateDetails(e));
 
     return {
         clearEditForm,
+        clearAddProjectForm,
+        clearAddTaskForm,
         showDetails,
         editDetails,
+        showAddProjectModal,
+        showAddTaskModal,
+        hideAddProjectModal,
+        hideAddTaskModal,
     }
 
 })();

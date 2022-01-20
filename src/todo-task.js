@@ -1,9 +1,10 @@
 export class TodoTask {
-    constructor(title, description, due_date, priority) {
+    constructor(title, description, due_date, priority, project = 'Example Project') {
         this.title = title;
         this.description = description;
         this.dueDate = due_date;
         this.priority = priority;
+        this.project = project;
     }
 }
 
@@ -11,8 +12,8 @@ export let todoHandler = (() => {
 
     let todoList = [];
 
-    let createTodo = (title, description, due_date, priority) => {
-        todoList.push(new TodoTask(title, description, due_date, priority));
+    let createTodo = (title, description, due_date, priority, project) => {
+        todoList.push(new TodoTask(title, description, due_date, priority, project));
     };
 
     let findIndex = title => todoList.findIndex(element => element.title === title);
@@ -33,13 +34,18 @@ export let todoHandler = (() => {
         todoList[index].dueDate = date;
     }
 
-    let updateTaskDetails = (title, newTitle, newDescription, newPriority, newDueDate) => {
+    let updateProject = (index, newProject) => {
+        todoList[index].project = newProject;
+    }
+
+    let updateTaskDetails = (title, newTitle, newDescription, newPriority, newDueDate, newProject) => {
         let index = findIndex(title);
         
         updateTitle(index, newTitle);
         updateDescription(index, newDescription);
         updatePriority(index, newPriority);
         updateDate(index, newDueDate);
+        updateProject(index, newProject);
     }
 
     let deleteTodo = (title) => {
