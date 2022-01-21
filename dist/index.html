@@ -20,7 +20,10 @@
             <h1 id='navigator-title'>Projects</h1>
             <hr style='width: 90%'>
             <div id='projects-container'>
-                <div id='example-project' class='project'>Example Project</div>
+                <div id='example-project' class='project'>
+                    <span>Example Project</span>
+                    <span class='icon material-icons'>delete</span>
+                </div>
             </div>
             <button id='add-project-button'>Add Project</button>
         </div>
@@ -75,7 +78,7 @@
                 <input id='add-description' type='text' placeholder="Description" name='description' value=''>
                 <input id='add-priority' type='text' placeholder="Priority" name='priority' value=''>
                 <input id='add-due-date' type='text' placeholder="Due Date" name='due-date' value=''>
-                <input id='add-project' type='text' placeholder="Project" name='due-date' value=''>
+                <input id='add-project' type='text' name='due-date' value='' readonly>
                 <button id='add-task-submit-button'>Add New Task</button>
             </div>
         </div>

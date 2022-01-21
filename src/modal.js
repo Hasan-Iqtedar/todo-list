@@ -40,8 +40,9 @@ export let modalHandler = (() => {
 
     let showDetails = (e) => {
 
-        let taskContainer = e.target.parentElement.parentElement.querySelector('.task');
-        let task = todoHandler.getToDoList()[taskContainer.getAttribute('data-index')];
+        let task = e.target.parentElement.parentElement.querySelector('.task');
+        let todo = todoHandler.getToDoList()[todoHandler.findIndex(task.textContent)];
+
 
         let taskTitle = document.querySelector('#task-title');
         let description = document.querySelector('#description');
@@ -49,11 +50,11 @@ export let modalHandler = (() => {
         let dueDate = document.querySelector('#due-date');
         let project = document.querySelector('#project-field');
 
-        taskTitle.textContent = task.title;
-        description.textContent = task.description;
-        priority.textContent = task.priority;
-        dueDate.textContent = task.dueDate;
-        project.textContent = task.project;
+        taskTitle.textContent = todo.title;
+        description.textContent = todo.description;
+        priority.textContent = todo.priority;
+        dueDate.textContent = todo.dueDate;
+        project.textContent = todo.project;
 
         detailsModal.style.display = 'block';
     }

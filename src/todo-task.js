@@ -48,8 +48,9 @@ export let todoHandler = (() => {
         updateProject(index, newProject);
     }
 
-    let deleteTodo = (title) => {
-        todoList = todoList.filter(element => element.title !== title);
+    let deleteTodo = (index) => {
+        console.log(index);
+        todoList.splice(index, 1);
     };
 
     let getToDoList = () => {
@@ -60,7 +61,8 @@ export let todoHandler = (() => {
         getToDoList,
         createTodo,
         updateTaskDetails,
-        deleteTodo
+        deleteTodo,
+        findIndex,
     }
 
 })();

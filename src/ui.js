@@ -13,20 +13,27 @@ export let domHandler = (() => {
 
     exampleProject.addEventListener('click', (e) => {
         activeProject.style.backgroundColor = '';
-        renderContent(e.target)
+        renderContent(e.currentTarget);
     });
 
     addProjectButton.addEventListener('click', () => modalHandler.showAddProjectModal());
-    addTaskButton.addEventListener('click', () => modalHandler.showAddTaskModal());
     addProjectSubmitButton.addEventListener('click', () => submitNewProject());
     addTaskSubmitButton.addEventListener('click', () => submitNewTask());
+
+    addTaskButton.addEventListener('click', () => {
+
+        let addProject = document.querySelector('#add-project');
+        addProject.value = activeProject.getElementsByTagName('span')[0].textContent;
+        modalHandler.showAddTaskModal()
+    });
+
 
     let deleteTask = (e) => {
         let listContainer = document.querySelector('#list-container');
         let task = e.target.parentElement.parentElement.parentElement;
         let title = task.querySelector('.task').textContent;
         listContainer.removeChild(task);
-        todoHandler.deleteTodo(title);
+        todoHandler.deleteTodo(todoHandler.findIndex(title));
     }
 
     let addNewTask = (title, index) => {
@@ -74,15 +81,24 @@ export let domHandler = (() => {
 
         if (projectName !== '') {
             let newProject = document.createElement('div');
+            let projectTitle = document.createElement('span');
+            let delIcon = document.createElement('span');
+
             newProject.classList.add('project');
-            newProject.textContent = projectName;
+            delIcon.classList.add('icon', 'material-icons');
+
+            delIcon.textContent = 'delete';
+            projectTitle.textContent = projectName;
+            newProject.append(projectTitle, delIcon);
 
             newProject.addEventListener('click', (e) => {
                 activeProject.style.backgroundColor = '';
-                renderContent(e.target, projectName)
+                renderContent(e.currentTarget, projectName)
             });
 
-            projectsContainer.appendChild(newProject);
+            delIcon.addEventListener('click', (e) => deleteProject(e));
+
+            projectsContainer.append(newProject);
             modalHandler.clearAddProjectForm();
         }
 
@@ -108,8 +124,24 @@ export let domHandler = (() => {
         modalHandler.clearAddTaskForm();
     }
 
-    let renderContent = (target = exampleProject, projectTitle = 'Example Project') => {
+    let deleteProject = (e) => {
+        e.stopPropagation();
+        let projectsContainer = document.querySelector('#projects-container');
+        let projectToBeDeleted = e.currentTarget.parentElement;
 
+        let projectTitle = projectToBeDeleted.getElementsByTagName('span')[0].textContent;
+
+        todoHandler.getToDoList().forEach((element, index) => {
+            if (element.project === projectTitle) {
+                todoHandler.deleteTodo(index);
+            }
+        });
+
+        projectsContainer.removeChild(projectToBeDeleted);
+        renderContent();
+    }
+
+    let renderContent = (target = exampleProject, projectTitle = 'Example Project') => {
         target.style.backgroundColor = 'rgba(204, 177, 188, 0.8)';
         activeProject = target;
 
