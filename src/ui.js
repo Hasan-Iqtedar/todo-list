@@ -43,6 +43,10 @@ export let domHandler = (() => {
         let taskContainer = document.createElement('div');
         taskContainer.classList.add('task-container');
 
+        let checkBox = document.createElement('div');
+        checkBox.classList.add('checkbox');
+        checkBox.addEventListener('click', () => checkBox.classList.contains('checkbox-checked') ? checkBox.classList.remove('checkbox-checked') : checkBox.classList.add('checkbox-checked'));
+
         let task = document.createElement('span');
         task.textContent = title;
         task.classList.add('task');
@@ -71,7 +75,7 @@ export let domHandler = (() => {
 
         iconsContainer.append(editIcon, delIcon);
         buttonsContainer.append(detailsButton, iconsContainer);
-        taskContainer.append(task, buttonsContainer);
+        taskContainer.append(checkBox, task, buttonsContainer);
         listContainer.append(taskContainer);
     }
 

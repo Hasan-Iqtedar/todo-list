@@ -218,3 +218,19 @@ hr {
 #add-project:focus {
     outline: none;
 }
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 25%;
+    background-color: white;
+    margin-right: 5px;
+}
+
+.checkbox-checked {
+    background-image: url('https://pret3nti0u5.github.io/To-Do-List/imgs/tick.b899c6a3b2f518f6f26913e0336a903a.svg');
+    background-position: 50% 50%;
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-color: lightgray;
+}
