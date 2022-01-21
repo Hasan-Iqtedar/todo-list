@@ -20,6 +20,8 @@ body {
 
 .container {
     display: flex;
+    /* width: 100vw; */
+    width: 100%;
     height: 100%;
 }
 
@@ -40,15 +42,14 @@ body {
     display: flex;
     flex-direction: column;
     width: 80%;
-    /* height: 100%; */
     background-color: rgb(247, 242, 242);
     padding-top: 60px;
     padding-bottom: 60px;
 }
 
 .task-container {
-    width: 700px;
-    height: 40px;
+    width: 70%;
+    min-height: 40px;
     display: flex;
     align-items: center;
     margin-bottom: 10px;
@@ -62,6 +63,9 @@ body {
 .task {
     color: rgb(104, 72, 72);
     font-size: large;
+    max-width: 40%;
+    min-width: 20%;
+    overflow: hidden;
 }
 
 .task-container:hover {
@@ -198,7 +202,7 @@ hr {
 #add-task-button {
     width: fit-content;
     background-color: rgba(236, 217, 232, 0.8);
-    margin-left: 710px;
+    margin-left: 70%;
 }
 
 #add-project-button:hover {
@@ -210,7 +214,6 @@ hr {
 }
 
 #list-container {
-    width: fit-content;
     display: flex;
     flex-direction: column;
 }
@@ -222,6 +225,9 @@ hr {
 .checkbox {
     width: 20px;
     height: 20px;
+    
+    min-width: 20px;
+    min-height: 20px;
     border-radius: 25%;
     background-color: white;
     margin-right: 5px;
@@ -233,4 +239,28 @@ hr {
     background-size: 14px;
     background-repeat: no-repeat;
     background-color: lightgray;
+}
+
+@media (max-width:850px) {
+
+    .container {
+        flex-direction: column;
+    }  
+
+    .navigator {
+        width: 100%;
+    }
+
+    .content {
+        width: 100%;
+        height: 100%;
+    }
+
+    .task-container {
+        justify-content: center;
+    }
+
+    .task {
+        font-size: small;
+    }
 }
